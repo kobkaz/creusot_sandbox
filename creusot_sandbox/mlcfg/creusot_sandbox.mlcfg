@@ -1,1 +1,340 @@
 
+module CreusotSandbox_Gcd_LemmaPreserveCdAdd_Interface
+  use mach.int.Int
+  val lemma_preserve_cd_add [#"../../src/gcd.rs" 6 0 6 26] (_1' : ()) : ()
+    ensures { [#"../../src/gcd.rs" 3 0 5 85] forall d : int . forall q : int . forall p : int . d <> 0 -> 0 <= p -> 0 <= q -> mod p d = 0 -> mod q d = 0 -> mod (p + q) d = 0 }
+    
+end
+module CreusotSandbox_Gcd_LemmaPreserveCdAdd
+  use mach.int.Int
+  let rec cfg lemma_preserve_cd_add [#"../../src/gcd.rs" 6 0 6 26] [@cfg:stackify] [@cfg:subregion_analysis] (_1' : ()) : ()
+    ensures { [#"../../src/gcd.rs" 3 0 5 85] forall d : int . forall q : int . forall p : int . d <> 0 -> 0 <= p -> 0 <= q -> mod p d = 0 -> mod q d = 0 -> mod (p + q) d = 0 }
+    
+   = [@vc:do_not_keep_trace] [@vc:sp]
+  var _0 : ();
+  {
+    goto BB0
+  }
+  BB0 {
+    _0 <- ();
+    return _0
+  }
+  
+end
+module CreusotSandbox_Gcd_LemmaPreserveCdSub_Interface
+  use mach.int.Int
+  val lemma_preserve_cd_sub [#"../../src/gcd.rs" 11 0 11 26] (_1' : ()) : ()
+    ensures { [#"../../src/gcd.rs" 8 0 10 86] forall d : int . forall q : int . forall p : int . d <> 0 -> 0 <= q -> q <= p -> mod p d = 0 -> mod q d = 0 -> mod (p - q) d = 0 }
+    
+end
+module CreusotSandbox_Gcd_LemmaPreserveCdSub
+  use mach.int.Int
+  let rec cfg lemma_preserve_cd_sub [#"../../src/gcd.rs" 11 0 11 26] [@cfg:stackify] [@cfg:subregion_analysis] (_1' : ()) : ()
+    ensures { [#"../../src/gcd.rs" 8 0 10 86] forall d : int . forall q : int . forall p : int . d <> 0 -> 0 <= q -> q <= p -> mod p d = 0 -> mod q d = 0 -> mod (p - q) d = 0 }
+    
+   = [@vc:do_not_keep_trace] [@vc:sp]
+  var _0 : ();
+  {
+    goto BB0
+  }
+  BB0 {
+    _0 <- ();
+    return _0
+  }
+  
+end
+module CreusotSandbox_Gcd_LemmaDivisorMult_Interface
+  use mach.int.Int
+  val lemma_divisor_mult [#"../../src/gcd.rs" 16 0 16 23] (_1' : ()) : ()
+    ensures { [#"../../src/gcd.rs" 13 0 15 48] forall d : int . forall q : int . forall p : int . d <> 0 -> mod q d = 0 -> mod (p * q) d = 0 }
+    
+end
+module CreusotSandbox_Gcd_LemmaDivisorMult
+  use mach.int.Int
+  let rec cfg lemma_divisor_mult [#"../../src/gcd.rs" 16 0 16 23] [@cfg:stackify] [@cfg:subregion_analysis] (_1' : ()) : ()
+    ensures { [#"../../src/gcd.rs" 13 0 15 48] forall d : int . forall q : int . forall p : int . d <> 0 -> mod q d = 0 -> mod (p * q) d = 0 }
+    
+   = [@vc:do_not_keep_trace] [@vc:sp]
+  var _0 : ();
+  {
+    goto BB0
+  }
+  BB0 {
+    _0 <- ();
+    return _0
+  }
+  
+end
+module CreusotSandbox_Gcd_IsCommonDivisor_Stub
+  use mach.int.Int
+  function is_common_divisor [#"../../src/gcd.rs" 19 0 19 52] (a : int) (b : int) (d : int) : bool
+end
+module CreusotSandbox_Gcd_IsCommonDivisor_Interface
+  use mach.int.Int
+  function is_common_divisor [#"../../src/gcd.rs" 19 0 19 52] (a : int) (b : int) (d : int) : bool
+end
+module CreusotSandbox_Gcd_IsCommonDivisor
+  use mach.int.Int
+  function is_common_divisor [#"../../src/gcd.rs" 19 0 19 52] (a : int) (b : int) (d : int) : bool =
+    [#"../../src/gcd.rs" 20 4 20 38] mod a d = 0 /\ mod b d = 0 /\ d <> 0
+  val is_common_divisor [#"../../src/gcd.rs" 19 0 19 52] (a : int) (b : int) (d : int) : bool
+    ensures { result = is_common_divisor a b d }
+    
+end
+module Core_Mem_Swap_Interface
+  type t
+  use prelude.Borrow
+  val swap (x : borrowed t) (y : borrowed t) : ()
+    ensures {  ^ x =  * y }
+    ensures {  ^ y =  * x }
+    
+end
+module CreusotContracts_Resolve_Resolve_Resolve_Stub
+  type self
+  predicate resolve (self : self)
+end
+module CreusotContracts_Resolve_Resolve_Resolve_Interface
+  type self
+  predicate resolve (self : self)
+end
+module CreusotContracts_Resolve_Resolve_Resolve
+  type self
+  predicate resolve (self : self)
+  val resolve (self : self) : bool
+    ensures { result = resolve self }
+    
+end
+module CreusotContracts_Resolve_Impl0_Resolve_Stub
+  type t1
+  type t2
+  predicate resolve (self : (t1, t2))
+end
+module CreusotContracts_Resolve_Impl0_Resolve_Interface
+  type t1
+  type t2
+  predicate resolve (self : (t1, t2))
+end
+module CreusotContracts_Resolve_Impl0_Resolve
+  type t1
+  type t2
+  clone CreusotContracts_Resolve_Resolve_Resolve_Stub as Resolve1 with
+    type self = t2
+  clone CreusotContracts_Resolve_Resolve_Resolve_Stub as Resolve0 with
+    type self = t1
+  predicate resolve (self : (t1, t2)) =
+    Resolve0.resolve (let (a, _) = self in a) /\ Resolve1.resolve (let (_, a) = self in a)
+  val resolve (self : (t1, t2)) : bool
+    ensures { result = resolve self }
+    
+end
+module CreusotContracts_Resolve_Impl1_Resolve_Stub
+  type t
+  use prelude.Borrow
+  predicate resolve (self : borrowed t)
+end
+module CreusotContracts_Resolve_Impl1_Resolve_Interface
+  type t
+  use prelude.Borrow
+  predicate resolve (self : borrowed t)
+end
+module CreusotContracts_Resolve_Impl1_Resolve
+  type t
+  use prelude.Borrow
+  predicate resolve (self : borrowed t) =
+     ^ self =  * self
+  val resolve (self : borrowed t) : bool
+    ensures { result = resolve self }
+    
+end
+module CreusotContracts_Resolve_Impl2_Resolve_Stub
+  type t
+  predicate resolve (self : t)
+end
+module CreusotContracts_Resolve_Impl2_Resolve_Interface
+  type t
+  predicate resolve (self : t)
+end
+module CreusotContracts_Resolve_Impl2_Resolve
+  type t
+  predicate resolve (self : t) =
+    true
+  val resolve (self : t) : bool
+    ensures { result = resolve self }
+    
+end
+module CreusotSandbox_Gcd_Gcd_Interface
+  use mach.int.UInt64
+  use mach.int.Int
+  clone CreusotSandbox_Gcd_IsCommonDivisor_Stub as IsCommonDivisor0
+  val gcd [#"../../src/gcd.rs" 26 0 26 33] (a : uint64) (b : uint64) : uint64
+    requires {[#"../../src/gcd.rs" 23 11 23 29] UInt64.to_int a <> 0 /\ UInt64.to_int b <> 0}
+    ensures { [#"../../src/gcd.rs" 24 10 24 44] IsCommonDivisor0.is_common_divisor (UInt64.to_int a) (UInt64.to_int b) (UInt64.to_int result) }
+    ensures { [#"../../src/gcd.rs" 25 0 25 77] forall d : uint64 . IsCommonDivisor0.is_common_divisor (UInt64.to_int a) (UInt64.to_int b) (UInt64.to_int d) -> mod (UInt64.to_int result) (UInt64.to_int d) = 0 }
+    
+end
+module CreusotSandbox_Gcd_Gcd
+  use mach.int.Int
+  use mach.int.UInt64
+  use prelude.Borrow
+  use int.MinMax
+  clone CreusotContracts_Resolve_Impl2_Resolve as Resolve2 with
+    type t = uint64
+  clone CreusotContracts_Resolve_Impl1_Resolve as Resolve1 with
+    type t = uint64
+  clone Core_Mem_Swap_Interface as Swap0 with
+    type t = uint64
+  clone CreusotSandbox_Gcd_LemmaDivisorMult_Interface as LemmaDivisorMult0
+  clone CreusotSandbox_Gcd_LemmaPreserveCdSub_Interface as LemmaPreserveCdSub0
+  clone CreusotSandbox_Gcd_LemmaPreserveCdAdd_Interface as LemmaPreserveCdAdd0
+  clone CreusotContracts_Resolve_Impl0_Resolve as Resolve0 with
+    type t1 = uint64,
+    type t2 = uint64,
+    predicate Resolve0.resolve = Resolve2.resolve,
+    predicate Resolve1.resolve = Resolve2.resolve
+  clone CreusotSandbox_Gcd_IsCommonDivisor as IsCommonDivisor0
+  let rec cfg gcd [#"../../src/gcd.rs" 26 0 26 33] [@cfg:stackify] [@cfg:subregion_analysis] (a : uint64) (b : uint64) : uint64
+    requires {[#"../../src/gcd.rs" 23 11 23 29] UInt64.to_int a <> 0 /\ UInt64.to_int b <> 0}
+    ensures { [#"../../src/gcd.rs" 24 10 24 44] IsCommonDivisor0.is_common_divisor (UInt64.to_int a) (UInt64.to_int b) (UInt64.to_int result) }
+    ensures { [#"../../src/gcd.rs" 25 0 25 77] forall d : uint64 . IsCommonDivisor0.is_common_divisor (UInt64.to_int a) (UInt64.to_int b) (UInt64.to_int d) -> mod (UInt64.to_int result) (UInt64.to_int d) = 0 }
+    
+   = [@vc:do_not_keep_trace] [@vc:sp]
+  var _0 : uint64;
+  var a_1 : uint64;
+  var b_2 : uint64;
+  var x_6 : uint64;
+  var y_7 : uint64;
+  var _8 : (uint64, uint64);
+  var _9 : bool;
+  var _10 : uint64;
+  var _11 : uint64;
+  var _12 : uint64;
+  var _13 : uint64;
+  var _14 : uint64;
+  var _15 : uint64;
+  var _16 : ();
+  var _18 : ();
+  var _20 : ();
+  var _24 : ();
+  var _25 : bool;
+  var _26 : uint64;
+  var _27 : ();
+  var _28 : ();
+  var _29 : ();
+  var _30 : ();
+  var _32 : ();
+  var _34 : ();
+  var _36 : ();
+  var _38 : uint64;
+  var _39 : uint64;
+  var _40 : bool;
+  var _41 : ();
+  var _42 : borrowed uint64;
+  var _43 : borrowed uint64;
+  var _44 : borrowed uint64;
+  var _45 : borrowed uint64;
+  var _46 : ();
+  var _47 : ();
+  var _48 : ();
+  var _49 : ();
+  {
+    a_1 <- a;
+    b_2 <- b;
+    goto BB0
+  }
+  BB0 {
+    _10 <- a_1;
+    _11 <- b_2;
+    _9 <- ([#"../../src/gcd.rs" 27 28 27 33] _10 < _11);
+    switch (_9)
+      | False -> goto BB2
+      | True -> goto BB1
+      end
+  }
+  BB1 {
+    _12 <- a_1;
+    _13 <- b_2;
+    _8 <- (_12, _13);
+    goto BB3
+  }
+  BB2 {
+    _14 <- b_2;
+    _15 <- a_1;
+    _8 <- (_14, _15);
+    goto BB3
+  }
+  BB3 {
+    x_6 <- (let (a, _) = _8 in a);
+    y_7 <- (let (_, a) = _8 in a);
+    assume { Resolve0.resolve _8 };
+    assert { [#"../../src/gcd.rs" 28 18 28 36] UInt64.to_int x_6 = MinMax.min (UInt64.to_int a_1) (UInt64.to_int b_2) };
+    _16 <- ();
+    assert { [#"../../src/gcd.rs" 29 18 29 36] UInt64.to_int y_7 = MinMax.max (UInt64.to_int a_1) (UInt64.to_int b_2) };
+    _18 <- ();
+    goto BB4
+  }
+  BB4 {
+    invariant cd { [#"../../src/gcd.rs" 31 4 31 96] forall d : int . IsCommonDivisor0.is_common_divisor (UInt64.to_int x_6) (UInt64.to_int y_7) d = IsCommonDivisor0.is_common_divisor (UInt64.to_int a_1) (UInt64.to_int b_2) d };
+    invariant le_xy { [#"../../src/gcd.rs" 33 23 33 31] UInt64.to_int x_6 <= UInt64.to_int y_7 };
+    invariant y_pos { [#"../../src/gcd.rs" 34 23 34 29] UInt64.to_int y_7 > 0 };
+    _26 <- x_6;
+    _25 <- ([#"../../src/gcd.rs" 35 10 35 16] _26 <> ([#"../../src/gcd.rs" 35 15 35 16] (0 : uint64)));
+    switch (_25)
+      | False -> goto BB11
+      | True -> goto BB5
+      end
+  }
+  BB5 {
+    _27 <- ([#"../../src/gcd.rs" 36 8 36 31] LemmaPreserveCdAdd0.lemma_preserve_cd_add ());
+    goto BB6
+  }
+  BB6 {
+    _28 <- ([#"../../src/gcd.rs" 37 8 37 31] LemmaPreserveCdSub0.lemma_preserve_cd_sub ());
+    goto BB7
+  }
+  BB7 {
+    _29 <- ([#"../../src/gcd.rs" 38 8 38 28] LemmaDivisorMult0.lemma_divisor_mult ());
+    goto BB8
+  }
+  BB8 {
+    assert { [#"../../src/gcd.rs" 40 22 40 52] UInt64.to_int y_7 = div (UInt64.to_int y_7) (UInt64.to_int x_6) * UInt64.to_int x_6 + mod (UInt64.to_int y_7) (UInt64.to_int x_6) };
+    _30 <- ();
+    assert { [#"../../src/gcd.rs" 41 8 41 87] forall d : int . IsCommonDivisor0.is_common_divisor (UInt64.to_int x_6) (mod (UInt64.to_int y_7) (UInt64.to_int x_6)) d -> mod (UInt64.to_int y_7) d = 0 };
+    _32 <- ();
+    assert { [#"../../src/gcd.rs" 42 22 42 53] mod (UInt64.to_int y_7) (UInt64.to_int x_6) = UInt64.to_int y_7 - div (UInt64.to_int y_7) (UInt64.to_int x_6) * UInt64.to_int x_6 };
+    _34 <- ();
+    assert { [#"../../src/gcd.rs" 43 8 44 91] forall d : int . IsCommonDivisor0.is_common_divisor (UInt64.to_int x_6) (UInt64.to_int y_7) d -> mod (UInt64.to_int y_7 - div (UInt64.to_int y_7) (UInt64.to_int x_6) * UInt64.to_int x_6) d = 0 };
+    _36 <- ();
+    _38 <- y_7;
+    _39 <- x_6;
+    _40 <- ([#"../../src/gcd.rs" 45 12 45 17] _39 = ([#"../../src/gcd.rs" 45 12 45 17] (0 : uint64)));
+    assert { [#"../../src/gcd.rs" 45 12 45 17] not _40 };
+    goto BB9
+  }
+  BB9 {
+    y_7 <- ([#"../../src/gcd.rs" 45 8 45 17] _38 % _39);
+    _43 <- borrow_mut x_6;
+    x_6 <-  ^ _43;
+    _42 <- borrow_mut ( * _43);
+    _43 <- { _43 with current = ( ^ _42) };
+    _45 <- borrow_mut y_7;
+    y_7 <-  ^ _45;
+    _44 <- borrow_mut ( * _45);
+    _45 <- { _45 with current = ( ^ _44) };
+    _41 <- ([#"../../src/gcd.rs" 46 8 46 38] Swap0.swap _42 _44);
+    goto BB10
+  }
+  BB10 {
+    assume { Resolve1.resolve _43 };
+    assume { Resolve1.resolve _45 };
+    _24 <- ();
+    goto BB4
+  }
+  BB11 {
+    _20 <- ();
+    assert { [#"../../src/gcd.rs" 49 18 49 47] IsCommonDivisor0.is_common_divisor (UInt64.to_int x_6) (UInt64.to_int y_7) (UInt64.to_int y_7) };
+    _49 <- ();
+    _0 <- y_7;
+    return _0
+  }
+  
+end
