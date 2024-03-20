@@ -1,230 +1,247 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE why3session PUBLIC "-//Why3//proof session v5//EN"
-"http://why3.lri.fr/why3session.dtd">
+"https://www.why3.org/why3session.dtd">
 <why3session shape_version="6">
-<prover id="0" name="Coq" version="8.16.1" timelimit="0" steplimit="0" memlimit="0"/>
-<prover id="1" name="Alt-Ergo" version="2.4.2" timelimit="1" steplimit="0" memlimit="1000"/>
-<prover id="2" name="CVC4" version="1.6" timelimit="1" steplimit="0" memlimit="1000"/>
 <prover id="3" name="Z3" version="4.8.7" timelimit="1" steplimit="0" memlimit="1000"/>
+<prover id="5" name="CVC4" version="1.8" timelimit="5" steplimit="0" memlimit="1000"/>
+<prover id="6" name="Coq" version="8.18.0" timelimit="0" steplimit="0" memlimit="0"/>
+<prover id="8" name="Alt-Ergo" version="2.4.3" timelimit="1" steplimit="0" memlimit="1000"/>
+<prover id="9" name="Alt-Ergo" version="2.4.3" alternative="FPA" timelimit="1" steplimit="0" memlimit="1000"/>
+<prover id="10" name="CVC4" version="1.8" alternative="strings+counterexamples" timelimit="1" steplimit="0" memlimit="1000"/>
 <file format="mlcfg" proved="true">
 <path name=".."/><path name="creusot_sandbox.mlcfg"/>
 <theory name="CreusotSandbox_Gcd_LemmaPreserveCdAdd" proved="true">
  <goal name="lemma_preserve_cd_add&#39;vc" expl="VC for lemma_preserve_cd_add" proved="true">
- <proof prover="0"><path name="creusot_sandbox_CreusotSandbox_Gcd_LemmaPreserveCdAdd_lemma_preserve_cd_addqtvc_1.v"/><result status="valid" time="0.24"/></proof>
+ <proof prover="6"><path name="creusot_sandbox_CreusotSandbox_Gcd_LemmaPreserveCdAdd_lemma_preserve_cd_addqtvc_1.v"/><result status="valid" time="0.915944"/></proof>
  </goal>
 </theory>
 <theory name="CreusotSandbox_Gcd_LemmaPreserveCdSub" proved="true">
  <goal name="lemma_preserve_cd_sub&#39;vc" expl="VC for lemma_preserve_cd_sub" proved="true">
- <proof prover="0"><path name="creusot_sandbox_CreusotSandbox_Gcd_LemmaPreserveCdSub_lemma_preserve_cd_subqtvc_1.v"/><result status="valid" time="0.23"/></proof>
+ <proof prover="6"><path name="creusot_sandbox_CreusotSandbox_Gcd_LemmaPreserveCdSub_lemma_preserve_cd_subqtvc_1.v"/><result status="valid" time="0.868731"/></proof>
  </goal>
 </theory>
 <theory name="CreusotSandbox_Gcd_LemmaDivisorMult" proved="true">
  <goal name="lemma_divisor_mult&#39;vc" expl="VC for lemma_divisor_mult" proved="true">
- <proof prover="0"><path name="creusot_sandbox_CreusotSandbox_Gcd_LemmaDivisorMult_lemma_divisor_multqtvc_1.v"/><result status="valid" time="0.24"/></proof>
+ <proof prover="6"><path name="creusot_sandbox_CreusotSandbox_Gcd_LemmaDivisorMult_lemma_divisor_multqtvc_1.v"/><result status="valid" time="0.829263"/></proof>
  </goal>
 </theory>
 <theory name="CreusotSandbox_Gcd_Gcd" proved="true">
  <goal name="gcd&#39;vc" expl="VC for gcd" proved="true">
  <transf name="split_vc" proved="true" >
   <goal name="gcd&#39;vc.0" expl="assertion" proved="true">
-  <proof prover="2"><result status="valid" time="0.01" steps="3025"/></proof>
+  <proof prover="3"><result status="valid" time="0.028204" steps="9557"/></proof>
   </goal>
   <goal name="gcd&#39;vc.1" expl="assertion" proved="true">
-  <proof prover="2"><result status="valid" time="0.01" steps="3206"/></proof>
+  <proof prover="3"><result status="valid" time="0.022452" steps="11866"/></proof>
   </goal>
   <goal name="gcd&#39;vc.2" expl="loop invariant init" proved="true">
-  <proof prover="2"><result status="valid" time="0.02" steps="4984"/></proof>
+  <proof prover="3"><result status="valid" time="0.030229" steps="21735"/></proof>
   </goal>
   <goal name="gcd&#39;vc.3" expl="loop invariant init" proved="true">
-  <proof prover="2"><result status="valid" time="0.01" steps="4230"/></proof>
+  <proof prover="10"><result status="valid" time="0.010000" steps="4696"/></proof>
   </goal>
   <goal name="gcd&#39;vc.4" expl="loop invariant init" proved="true">
-  <proof prover="2"><result status="valid" time="0.02" steps="5183"/></proof>
+  <proof prover="3"><result status="valid" time="0.026374" steps="19674"/></proof>
   </goal>
   <goal name="gcd&#39;vc.5" expl="assertion" proved="true">
-  <proof prover="2"><result status="valid" time="0.06" steps="19095"/></proof>
+  <proof prover="3"><result status="valid" time="0.070733" steps="1533301"/></proof>
   </goal>
   <goal name="gcd&#39;vc.6" expl="postcondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.01" steps="4466"/></proof>
+  <proof prover="10"><result status="valid" time="0.010000" steps="5484"/></proof>
   </goal>
   <goal name="gcd&#39;vc.7" expl="postcondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.02" steps="6530"/></proof>
+  <proof prover="3"><result status="valid" time="0.031388" steps="24303"/></proof>
   </goal>
   <goal name="gcd&#39;vc.8" expl="assertion" proved="true">
-  <proof prover="2"><result status="valid" time="0.02" steps="6547"/></proof>
+  <proof prover="3"><result status="valid" time="0.027478" steps="24732"/></proof>
   </goal>
   <goal name="gcd&#39;vc.9" expl="assertion" proved="true">
-  <proof prover="1"><result status="valid" time="0.03" steps="1195"/></proof>
+  <proof prover="8"><result status="valid" time="0.056645" steps="1199"/></proof>
   </goal>
   <goal name="gcd&#39;vc.10" expl="assertion" proved="true">
-  <proof prover="2"><result status="valid" time="0.02" steps="4481"/></proof>
+  <proof prover="9"><result status="valid" time="0.030000" steps="35"/></proof>
   </goal>
   <goal name="gcd&#39;vc.11" expl="assertion" proved="true">
-  <proof prover="1"><result status="valid" time="0.03" steps="1248"/></proof>
+  <proof prover="9"><result status="valid" time="0.030000" steps="1229"/></proof>
   </goal>
-  <goal name="gcd&#39;vc.12" expl="assertion" proved="true">
-  <proof prover="2"><result status="valid" time="0.01" steps="4603"/></proof>
+  <goal name="gcd&#39;vc.12" expl="remainder by zero" proved="true">
+  <proof prover="3"><result status="valid" time="0.020532" steps="2710"/></proof>
   </goal>
   <goal name="gcd&#39;vc.13" expl="division by zero" proved="true">
-  <proof prover="2"><result status="valid" time="0.01" steps="4605"/></proof>
+  <proof prover="10"><result status="valid" time="0.010000" steps="5309"/></proof>
   </goal>
   <goal name="gcd&#39;vc.14" expl="integer overflow" proved="true">
-  <proof prover="2"><result status="valid" time="0.03" steps="8689"/></proof>
+  <proof prover="3"><result status="valid" time="0.026130" steps="29013"/></proof>
   </goal>
-  <goal name="gcd&#39;vc.15" expl="loop invariant preservation" proved="true">
-  <proof prover="2"><result status="valid" time="0.10" steps="24567"/></proof>
+  <goal name="gcd&#39;vc.15" expl="precondition" proved="true">
+  <proof prover="10"><result status="valid" time="0.010000" steps="7209"/></proof>
   </goal>
-  <goal name="gcd&#39;vc.16" expl="loop invariant preservation" proved="true">
-  <proof prover="2"><result status="valid" time="0.03" steps="10568"/></proof>
+  <goal name="gcd&#39;vc.16" expl="precondition" proved="true">
+  <proof prover="3"><result status="valid" time="0.029066" steps="29453"/></proof>
   </goal>
   <goal name="gcd&#39;vc.17" expl="loop invariant preservation" proved="true">
-  <proof prover="2"><result status="valid" time="0.02" steps="8524"/></proof>
+  <proof prover="3"><result status="valid" time="0.031180" steps="45165"/></proof>
+  </goal>
+  <goal name="gcd&#39;vc.18" expl="loop invariant preservation" proved="true">
+  <proof prover="3"><result status="valid" time="0.030673" steps="33920"/></proof>
+  </goal>
+  <goal name="gcd&#39;vc.19" expl="loop invariant preservation" proved="true">
+  <proof prover="3"><result status="valid" time="0.026325" steps="33008"/></proof>
   </goal>
  </transf>
  </goal>
 </theory>
 <theory name="CreusotSandbox_UnionFind_Impl1_Reach_Impl" proved="true">
- <goal name="reach&#39;vc" expl="VC for reach" proved="true">
- <proof prover="2"><result status="valid" time="0.01" steps="5740"/></proof>
+ <goal name="vc_reach" proved="true">
+ <proof prover="3"><result status="valid" time="0.024877" steps="2322"/></proof>
  </goal>
 </theory>
 <theory name="CreusotSandbox_UnionFind_Impl1_LemmaReachIntro_Impl" proved="true">
- <goal name="lemma_reach_intro&#39;vc" expl="VC for lemma_reach_intro" proved="true">
- <proof prover="2"><result status="valid" time="0.02" steps="7574"/></proof>
+ <goal name="vc_lemma_reach_intro" proved="true">
+ <proof prover="3"><result status="valid" time="0.033262" steps="31613"/></proof>
  </goal>
 </theory>
 <theory name="CreusotSandbox_UnionFind_Impl1_LemmaReachIff_Impl" proved="true">
- <goal name="lemma_reach_iff&#39;vc" expl="VC for lemma_reach_iff" proved="true">
- <proof prover="2"><result status="valid" time="0.02" steps="7470"/></proof>
+ <goal name="vc_lemma_reach_iff" proved="true">
+ <proof prover="3"><result status="valid" time="0.024166" steps="31714"/></proof>
  </goal>
 </theory>
 <theory name="CreusotSandbox_UnionFind_Impl1_LemmaReachNonneg_Impl" proved="true">
- <goal name="lemma_reach_nonneg&#39;vc" expl="VC for lemma_reach_nonneg" proved="true">
- <proof prover="2"><result status="valid" time="0.02" steps="7132"/></proof>
+ <goal name="vc_lemma_reach_nonneg" proved="true">
+ <proof prover="3"><result status="valid" time="0.022040" steps="30829"/></proof>
  </goal>
 </theory>
 <theory name="CreusotSandbox_UnionFind_Impl1_ReachRefl_Impl" proved="true">
- <goal name="reach_refl&#39;vc" expl="VC for reach_refl" proved="true">
- <proof prover="2"><result status="valid" time="0.02" steps="7218"/></proof>
+ <goal name="vc_reach_refl" proved="true">
+ <proof prover="3"><result status="valid" time="0.029819" steps="31440"/></proof>
  </goal>
 </theory>
 <theory name="CreusotSandbox_UnionFind_Impl1_LemmaBelongUnique_Impl" proved="true">
- <goal name="lemma_belong_unique&#39;vc" expl="VC for lemma_belong_unique" proved="true">
- <proof prover="0"><path name="creusot_sandbox_CreusotSandbox_UnionFind_Impl1_LemmaBelongUnique_Impl_lemma_belong_uniqueqtvc_1.v"/><result status="valid" time="0.30"/></proof>
+ <goal name="vc_lemma_belong_unique" proved="true">
+ <proof prover="6"><path name="creusot_sandbox_CreusotSandbox_UnionFind_Impl1_LemmaBelongUnique_Impl_lemma_belong_uniqueqtvc_1.v"/><result status="valid" time="1.118790"/></proof>
  </goal>
 </theory>
 <theory name="CreusotSandbox_UnionFind_Impl1_RootBelongRefl_Impl" proved="true">
- <goal name="root_belong_refl&#39;vc" expl="VC for root_belong_refl" proved="true">
- <proof prover="1"><result status="valid" time="0.12" steps="2338"/></proof>
+ <goal name="vc_root_belong_refl" proved="true">
+ <proof prover="9"><result status="valid" time="0.120000" steps="661"/></proof>
  </goal>
 </theory>
 <theory name="CreusotSandbox_UnionFind_Impl1_LemmaUpdateParentEq_Impl" proved="true">
- <goal name="lemma_update_parent_eq&#39;vc" expl="VC for lemma_update_parent_eq" proved="true">
- <proof prover="2"><result status="valid" time="0.03" steps="8185"/></proof>
+ <goal name="vc_lemma_update_parent_eq" proved="true">
+ <proof prover="3"><result status="valid" time="0.040426" steps="44012"/></proof>
  </goal>
 </theory>
 <theory name="CreusotSandbox_UnionFind_Impl1_LemmaUpdateParentNe_Impl" proved="true">
- <goal name="lemma_update_parent_ne&#39;vc" expl="VC for lemma_update_parent_ne" proved="true">
- <proof prover="2"><result status="valid" time="0.03" steps="8203"/></proof>
+ <goal name="vc_lemma_update_parent_ne" proved="true">
+ <proof prover="3"><result status="valid" time="0.042002" steps="49178"/></proof>
  </goal>
 </theory>
 <theory name="CreusotSandbox_UnionFind_Impl1_LemmaUpdateInRange_Impl" proved="true">
- <goal name="lemma_update_in_range&#39;vc" expl="VC for lemma_update_in_range" proved="true">
- <proof prover="3"><result status="valid" time="0.02" steps="44010"/></proof>
+ <goal name="vc_lemma_update_in_range" proved="true">
+ <proof prover="3"><result status="valid" time="0.020000" steps="41490"/></proof>
  </goal>
 </theory>
 <theory name="CreusotSandbox_UnionFind_Impl1_LemmaReachableTrans_Impl" proved="true">
- <goal name="lemma_reachable_trans&#39;vc" expl="VC for lemma_reachable_trans" proved="true">
- <proof prover="0"><path name="creusot_sandbox_CreusotSandbox_UnionFind_Impl1_LemmaReachableTrans_Impl_lemma_reachable_transqtvc_1.v"/><result status="valid" time="0.34"/></proof>
+ <goal name="vc_lemma_reachable_trans" proved="true">
+ <proof prover="6"><path name="creusot_sandbox_CreusotSandbox_UnionFind_Impl1_LemmaReachableTrans_Impl_lemma_reachable_transqtvc_1.v"/><result status="valid" time="1.032694"/></proof>
  </goal>
 </theory>
 <theory name="CreusotSandbox_UnionFind_Impl1_LemmaUpdateBelongUpdated_Impl" proved="true">
- <goal name="lemma_update_belong_updated&#39;vc" expl="VC for lemma_update_belong_updated" proved="true">
- <proof prover="0"><path name="creusot_sandbox_CreusotSandbox_UnionFind_Impl1_LemmaUpdateBelongUpdated_Impl_lemma_update_belong_updatedqtvc_1.v"/><result status="valid" time="0.40"/></proof>
+ <goal name="vc_lemma_update_belong_updated" proved="true">
+ <proof prover="6"><path name="creusot_sandbox_CreusotSandbox_UnionFind_Impl1_LemmaUpdateBelongUpdated_Impl_lemma_update_belong_updatedqtvc_1.v"/><result status="valid" time="1.174943"/></proof>
  </goal>
 </theory>
 <theory name="CreusotSandbox_UnionFind_Impl1_LemmaUpdateBelongPreserved_Impl" proved="true">
- <goal name="lemma_update_belong_preserved&#39;vc" expl="VC for lemma_update_belong_preserved" proved="true">
- <proof prover="0"><path name="creusot_sandbox_CreusotSandbox_UnionFind_Impl1_LemmaUpdateBelongPreserved_Impl_lemma_update_belong_preservedqtvc_2.v"/><result status="valid" time="0.50"/></proof>
+ <goal name="vc_lemma_update_belong_preserved" proved="true">
+ <proof prover="6"><path name="creusot_sandbox_CreusotSandbox_UnionFind_Impl1_LemmaUpdateBelongPreserved_Impl_lemma_update_belong_preservedqtvc_2.v"/><result status="valid" time="1.310928"/></proof>
  </goal>
 </theory>
 <theory name="CreusotSandbox_UnionFind_Impl1_LemmaUpdateBelongShortcut_Impl" proved="true">
- <goal name="lemma_update_belong_shortcut&#39;vc" expl="VC for lemma_update_belong_shortcut" proved="true">
+ <goal name="vc_lemma_update_belong_shortcut" proved="true">
  <transf name="split_vc" proved="true" >
-  <goal name="lemma_update_belong_shortcut&#39;vc.0" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.02" steps="8390"/></proof>
+  <goal name="vc_lemma_update_belong_shortcut.0" proved="true">
+  <proof prover="10"><result status="valid" time="0.040000" steps="8902"/></proof>
   </goal>
-  <goal name="lemma_update_belong_shortcut&#39;vc.1" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.01" steps="8393"/></proof>
+  <goal name="vc_lemma_update_belong_shortcut.1" proved="true">
+  <proof prover="10"><result status="valid" time="0.020000" steps="8905"/></proof>
   </goal>
-  <goal name="lemma_update_belong_shortcut&#39;vc.2" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.01" steps="8396"/></proof>
+  <goal name="vc_lemma_update_belong_shortcut.2" proved="true">
+  <proof prover="10"><result status="valid" time="0.010000" steps="8908"/></proof>
   </goal>
-  <goal name="lemma_update_belong_shortcut&#39;vc.3" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.02" steps="8399"/></proof>
+  <goal name="vc_lemma_update_belong_shortcut.3" proved="true">
+  <proof prover="10"><result status="valid" time="0.117193" steps="8911"/></proof>
   </goal>
-  <goal name="lemma_update_belong_shortcut&#39;vc.4" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.02" steps="8390"/></proof>
+  <goal name="vc_lemma_update_belong_shortcut.4" proved="true">
+  <proof prover="10"><result status="valid" time="0.103117" steps="9104"/></proof>
   </goal>
-  <goal name="lemma_update_belong_shortcut&#39;vc.5" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.01" steps="8393"/></proof>
+  <goal name="vc_lemma_update_belong_shortcut.5" proved="true">
+  <proof prover="10"><result status="valid" time="0.020000" steps="9107"/></proof>
   </goal>
-  <goal name="lemma_update_belong_shortcut&#39;vc.6" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.02" steps="8396"/></proof>
+  <goal name="vc_lemma_update_belong_shortcut.6" proved="true">
+  <proof prover="10"><result status="valid" time="0.136157" steps="9110"/></proof>
   </goal>
-  <goal name="lemma_update_belong_shortcut&#39;vc.7" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.01" steps="8399"/></proof>
+  <goal name="vc_lemma_update_belong_shortcut.7" proved="true">
+  <proof prover="10"><result status="valid" time="0.010000" steps="9113"/></proof>
   </goal>
-  <goal name="lemma_update_belong_shortcut&#39;vc.8" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.01" steps="8390"/></proof>
+  <goal name="vc_lemma_update_belong_shortcut.8" proved="true">
+  <proof prover="10"><result status="valid" time="0.010000" steps="9296"/></proof>
   </goal>
-  <goal name="lemma_update_belong_shortcut&#39;vc.9" expl="postcondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.04" steps="13011"/></proof>
+  <goal name="vc_lemma_update_belong_shortcut.9" proved="true">
+  <proof prover="9"><result status="valid" time="0.760000" steps="4396"/></proof>
   </goal>
-  <goal name="lemma_update_belong_shortcut&#39;vc.10" expl="postcondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.38" steps="67156"/></proof>
+  <goal name="vc_lemma_update_belong_shortcut.10" proved="true">
+  <proof prover="5" timelimit="1"><result status="valid" time="0.498177" steps="34758"/></proof>
   </goal>
-  <goal name="lemma_update_belong_shortcut&#39;vc.11" expl="postcondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.76" steps="7498"/></proof>
+  <goal name="vc_lemma_update_belong_shortcut.11" proved="true">
+  <proof prover="3"><result status="valid" time="0.035416" steps="54354"/></proof>
+  </goal>
+  <goal name="vc_lemma_update_belong_shortcut.12" proved="true">
+  <proof prover="3"><result status="valid" time="0.037345" steps="54261"/></proof>
   </goal>
  </transf>
  </goal>
 </theory>
 <theory name="CreusotSandbox_UnionFind_Impl1_LemmaUpdateBelongUnify_Impl" proved="true">
- <goal name="lemma_update_belong_unify&#39;vc" expl="VC for lemma_update_belong_unify" proved="true">
+ <goal name="vc_lemma_update_belong_unify" proved="true">
  <transf name="split_vc" proved="true" >
-  <goal name="lemma_update_belong_unify&#39;vc.0" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.01" steps="8390"/></proof>
+  <goal name="vc_lemma_update_belong_unify.0" proved="true">
+  <proof prover="10"><result status="valid" time="0.030000" steps="8902"/></proof>
   </goal>
-  <goal name="lemma_update_belong_unify&#39;vc.1" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.01" steps="8393"/></proof>
+  <goal name="vc_lemma_update_belong_unify.1" proved="true">
+  <proof prover="10"><result status="valid" time="0.122955" steps="8905"/></proof>
   </goal>
-  <goal name="lemma_update_belong_unify&#39;vc.2" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.02" steps="8396"/></proof>
+  <goal name="vc_lemma_update_belong_unify.2" proved="true">
+  <proof prover="10"><result status="valid" time="0.010000" steps="8908"/></proof>
   </goal>
-  <goal name="lemma_update_belong_unify&#39;vc.3" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.01" steps="8399"/></proof>
+  <goal name="vc_lemma_update_belong_unify.3" proved="true">
+  <proof prover="10"><result status="valid" time="0.010000" steps="8911"/></proof>
   </goal>
-  <goal name="lemma_update_belong_unify&#39;vc.4" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.02" steps="8390"/></proof>
+  <goal name="vc_lemma_update_belong_unify.4" proved="true">
+  <proof prover="9"><result status="valid" time="0.031057" steps="10"/></proof>
   </goal>
-  <goal name="lemma_update_belong_unify&#39;vc.5" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.01" steps="8393"/></proof>
+  <goal name="vc_lemma_update_belong_unify.5" proved="true">
+  <proof prover="10"><result status="valid" time="0.117365" steps="9107"/></proof>
   </goal>
-  <goal name="lemma_update_belong_unify&#39;vc.6" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.01" steps="8396"/></proof>
+  <goal name="vc_lemma_update_belong_unify.6" proved="true">
+  <proof prover="10"><result status="valid" time="0.020000" steps="9110"/></proof>
   </goal>
-  <goal name="lemma_update_belong_unify&#39;vc.7" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.02" steps="8399"/></proof>
+  <goal name="vc_lemma_update_belong_unify.7" proved="true">
+  <proof prover="10"><result status="valid" time="0.020000" steps="9113"/></proof>
   </goal>
-  <goal name="lemma_update_belong_unify&#39;vc.8" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.02" steps="8390"/></proof>
+  <goal name="vc_lemma_update_belong_unify.8" proved="true">
+  <proof prover="10"><result status="valid" time="0.128572" steps="9296"/></proof>
   </goal>
-  <goal name="lemma_update_belong_unify&#39;vc.9" expl="postcondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.03" steps="10553"/></proof>
+  <goal name="vc_lemma_update_belong_unify.9" proved="true">
+  <proof prover="8"><result status="valid" time="0.556009" steps="4335"/></proof>
   </goal>
-  <goal name="lemma_update_belong_unify&#39;vc.10" expl="postcondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.49" steps="4644"/></proof>
+  <goal name="vc_lemma_update_belong_unify.10" proved="true">
+  <proof prover="3"><result status="valid" time="0.048150" steps="81537"/></proof>
+  </goal>
+  <goal name="vc_lemma_update_belong_unify.11" proved="true">
+  <proof prover="3"><result status="valid" time="0.024110" steps="48569"/></proof>
+  </goal>
+  <goal name="vc_lemma_update_belong_unify.12" proved="true">
+  <proof prover="3"><result status="valid" time="0.031502" steps="72771"/></proof>
   </goal>
  </transf>
  </goal>
@@ -233,130 +250,151 @@
  <goal name="new&#39;vc" expl="VC for new" proved="true">
  <transf name="split_vc" proved="true" >
   <goal name="new&#39;vc.0" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.02" steps="9163"/></proof>
+  <proof prover="10"><result status="valid" time="0.125906" steps="11788"/></proof>
   </goal>
   <goal name="new&#39;vc.1" expl="assertion" proved="true">
-  <proof prover="2"><result status="valid" time="0.03" steps="11086"/></proof>
+  <proof prover="10"><result status="valid" time="0.155334" steps="12746"/></proof>
   </goal>
   <goal name="new&#39;vc.2" expl="assertion" proved="true">
-  <proof prover="2"><result status="valid" time="0.04" steps="14578"/></proof>
+  <proof prover="3"><result status="valid" time="0.042051" steps="82042"/></proof>
   </goal>
   <goal name="new&#39;vc.3" expl="assertion" proved="true">
   <transf name="split_vc" proved="true" >
    <goal name="new&#39;vc.3.0" expl="assertion" proved="true">
-   <proof prover="1" timelimit="10" memlimit="4000"><result status="valid" time="1.04" steps="40942"/></proof>
+   <proof prover="9" timelimit="10" memlimit="4000"><result status="valid" time="0.287139" steps="4962"/></proof>
    </goal>
   </transf>
   </goal>
   <goal name="new&#39;vc.4" expl="postcondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.05" steps="14695"/></proof>
+  <proof prover="3"><result status="valid" time="0.038352" steps="70839"/></proof>
   </goal>
   <goal name="new&#39;vc.5" expl="postcondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.05" steps="12901"/></proof>
+  <proof prover="3"><result status="valid" time="0.035316" steps="67845"/></proof>
   </goal>
  </transf>
  </goal>
 </theory>
 <theory name="CreusotSandbox_UnionFind_Impl2_Update" proved="true">
  <goal name="update&#39;vc" expl="VC for update" proved="true">
- <proof prover="2"><result status="valid" time="0.17" steps="44034"/></proof>
+ <proof prover="8"><result status="valid" time="0.564133" steps="7607"/></proof>
  </goal>
 </theory>
 <theory name="CreusotSandbox_UnionFind_Impl2_Find" proved="true">
  <goal name="find&#39;vc" expl="VC for find" proved="true">
  <transf name="split_vc" proved="true" >
   <goal name="find&#39;vc.0" expl="loop invariant init" proved="true">
-  <proof prover="2"><result status="valid" time="0.04" steps="15399"/></proof>
+  <proof prover="10"><result status="valid" time="0.183058" steps="18292"/></proof>
   </goal>
   <goal name="find&#39;vc.1" expl="loop invariant init" proved="true">
-  <proof prover="2"><result status="valid" time="0.02" steps="15385"/></proof>
+  <proof prover="10"><result status="valid" time="0.179118" steps="18290"/></proof>
   </goal>
   <goal name="find&#39;vc.2" expl="loop invariant init" proved="true">
-  <proof prover="2"><result status="valid" time="0.03" steps="17655"/></proof>
+  <proof prover="3"><result status="valid" time="0.034274" steps="100096"/></proof>
   </goal>
   <goal name="find&#39;vc.3" expl="loop invariant init" proved="true">
-  <proof prover="2"><result status="valid" time="0.05" steps="17678"/></proof>
+  <proof prover="3"><result status="valid" time="0.040367" steps="100473"/></proof>
   </goal>
   <goal name="find&#39;vc.4" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.06" steps="19070"/></proof>
+  <proof prover="3"><result status="valid" time="0.032261" steps="101863"/></proof>
   </goal>
-  <goal name="find&#39;vc.5" expl="assertion" proved="true">
-  <proof prover="2"><result status="valid" time="0.04" steps="16951"/></proof>
+  <goal name="find&#39;vc.5" expl="precondition" proved="true">
+  <proof prover="3"><result status="valid" time="0.043175" steps="101035"/></proof>
   </goal>
   <goal name="find&#39;vc.6" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.03" steps="16129"/></proof>
+  <proof prover="3"><result status="valid" time="0.036553" steps="101114"/></proof>
   </goal>
-  <goal name="find&#39;vc.7" expl="loop invariant init" proved="true">
-  <proof prover="2"><result status="valid" time="0.02" steps="16190"/></proof>
+  <goal name="find&#39;vc.7" expl="assertion" proved="true">
+  <proof prover="10"><result status="valid" time="0.232344" steps="21419"/></proof>
   </goal>
-  <goal name="find&#39;vc.8" expl="loop invariant init" proved="true">
-  <proof prover="2"><result status="valid" time="0.04" steps="17050"/></proof>
+  <goal name="find&#39;vc.8" expl="precondition" proved="true">
+  <proof prover="10"><result status="valid" time="0.205979" steps="19817"/></proof>
   </goal>
-  <goal name="find&#39;vc.9" expl="loop invariant init" proved="true">
-  <proof prover="2"><result status="valid" time="0.03" steps="16201"/></proof>
+  <goal name="find&#39;vc.9" expl="precondition" proved="true">
+  <proof prover="3"><result status="valid" time="0.041441" steps="111137"/></proof>
   </goal>
   <goal name="find&#39;vc.10" expl="loop invariant init" proved="true">
-  <proof prover="2"><result status="valid" time="0.05" steps="18979"/></proof>
+  <proof prover="10"><result status="valid" time="0.224442" steps="20647"/></proof>
   </goal>
   <goal name="find&#39;vc.11" expl="loop invariant init" proved="true">
-  <proof prover="2"><result status="valid" time="0.06" steps="19131"/></proof>
+  <proof prover="10"><result status="valid" time="0.199854" steps="21866"/></proof>
   </goal>
-  <goal name="find&#39;vc.12" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.03" steps="16941"/></proof>
+  <goal name="find&#39;vc.12" expl="loop invariant init" proved="true">
+  <proof prover="10"><result status="valid" time="0.211466" steps="20167"/></proof>
   </goal>
-  <goal name="find&#39;vc.13" expl="postcondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.06" steps="19673"/></proof>
+  <goal name="find&#39;vc.13" expl="loop invariant init" proved="true">
+  <proof prover="3"><result status="valid" time="0.112806" steps="353429"/></proof>
   </goal>
-  <goal name="find&#39;vc.14" expl="postcondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.06" steps="20279"/></proof>
+  <goal name="find&#39;vc.14" expl="loop invariant init" proved="true">
+  <proof prover="3"><result status="valid" time="0.123531" steps="335717"/></proof>
   </goal>
-  <goal name="find&#39;vc.15" expl="postcondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.05" steps="19810"/></proof>
+  <goal name="find&#39;vc.15" expl="precondition" proved="true">
+  <proof prover="3"><result status="valid" time="0.037340" steps="117494"/></proof>
   </goal>
-  <goal name="find&#39;vc.16" expl="assertion" proved="true">
-  <proof prover="2"><result status="valid" time="0.12" steps="35010"/></proof>
+  <goal name="find&#39;vc.16" expl="postcondition" proved="true">
+  <proof prover="3"><result status="valid" time="0.055201" steps="122713"/></proof>
   </goal>
-  <goal name="find&#39;vc.17" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.06" steps="20910"/></proof>
+  <goal name="find&#39;vc.17" expl="postcondition" proved="true">
+  <proof prover="3"><result status="valid" time="0.218411" steps="533186"/></proof>
   </goal>
-  <goal name="find&#39;vc.18" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.10" steps="27763"/></proof>
+  <goal name="find&#39;vc.18" expl="postcondition" proved="true">
+  <proof prover="3"><result status="valid" time="0.025902" steps="123362"/></proof>
   </goal>
-  <goal name="find&#39;vc.19" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.06" steps="21122"/></proof>
+  <goal name="find&#39;vc.19" expl="assertion" proved="true">
+  <proof prover="3"><result status="valid" time="0.055737" steps="156357"/></proof>
   </goal>
   <goal name="find&#39;vc.20" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.06" steps="21126"/></proof>
+  <proof prover="3"><result status="valid" time="0.040369" steps="127911"/></proof>
   </goal>
-  <goal name="find&#39;vc.21" expl="loop invariant preservation" proved="true">
-  <proof prover="2"><result status="valid" time="0.03" steps="17882"/></proof>
+  <goal name="find&#39;vc.21" expl="precondition" proved="true">
+  <proof prover="3"><result status="valid" time="0.139462" steps="359508"/></proof>
   </goal>
-  <goal name="find&#39;vc.22" expl="loop invariant preservation" proved="true">
-  <proof prover="2"><result status="valid" time="0.06" steps="21614"/></proof>
+  <goal name="find&#39;vc.22" expl="precondition" proved="true">
+  <proof prover="3"><result status="valid" time="0.046991" steps="129772"/></proof>
   </goal>
-  <goal name="find&#39;vc.23" expl="loop invariant preservation" proved="true">
-  <proof prover="2"><result status="valid" time="0.06" steps="21295"/></proof>
+  <goal name="find&#39;vc.23" expl="precondition" proved="true">
+  <proof prover="3"><result status="valid" time="0.043447" steps="128634"/></proof>
   </goal>
   <goal name="find&#39;vc.24" expl="loop invariant preservation" proved="true">
-  <proof prover="2"><result status="valid" time="0.36" steps="72760"/></proof>
+  <proof prover="10"><result status="valid" time="0.279504" steps="25208"/></proof>
   </goal>
   <goal name="find&#39;vc.25" expl="loop invariant preservation" proved="true">
-  <proof prover="2"><result status="valid" time="0.11" steps="30432"/></proof>
+  <proof prover="8"><result status="valid" time="0.087465" steps="916"/></proof>
   </goal>
-  <goal name="find&#39;vc.26" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.05" steps="21187"/></proof>
+  <goal name="find&#39;vc.26" expl="loop invariant preservation" proved="true">
+  <proof prover="3"><result status="valid" time="0.050676" steps="131261"/></proof>
   </goal>
   <goal name="find&#39;vc.27" expl="loop invariant preservation" proved="true">
-  <proof prover="1"><result status="valid" time="0.04" steps="437"/></proof>
+  <proof prover="5"><result status="valid" time="2.651248" steps="142416"/></proof>
   </goal>
   <goal name="find&#39;vc.28" expl="loop invariant preservation" proved="true">
-  <proof prover="2"><result status="valid" time="0.07" steps="21286"/></proof>
+  <proof prover="3"><result status="valid" time="0.463642" steps="1008888"/></proof>
   </goal>
-  <goal name="find&#39;vc.29" expl="loop invariant preservation" proved="true">
-  <proof prover="2"><result status="valid" time="0.09" steps="26079"/></proof>
+  <goal name="find&#39;vc.29" expl="precondition" proved="true">
+  <proof prover="10"><result status="valid" time="0.230695" steps="21549"/></proof>
   </goal>
-  <goal name="find&#39;vc.30" expl="loop invariant preservation" proved="true">
-  <proof prover="3"><result status="valid" time="0.26" steps="2580974"/></proof>
+  <goal name="find&#39;vc.30" expl="precondition" proved="true">
+  <proof prover="3"><result status="valid" time="0.040417" steps="108725"/></proof>
+  </goal>
+  <goal name="find&#39;vc.31" expl="precondition" proved="true">
+  <proof prover="3"><result status="valid" time="0.042967" steps="111451"/></proof>
+  </goal>
+  <goal name="find&#39;vc.32" expl="precondition" proved="true">
+  <proof prover="3"><result status="valid" time="0.038664" steps="109165"/></proof>
+  </goal>
+  <goal name="find&#39;vc.33" expl="precondition" proved="true">
+  <proof prover="3"><result status="valid" time="0.036844" steps="109246"/></proof>
+  </goal>
+  <goal name="find&#39;vc.34" expl="loop invariant preservation" proved="true">
+  <proof prover="8"><result status="valid" time="0.063018" steps="385"/></proof>
+  </goal>
+  <goal name="find&#39;vc.35" expl="loop invariant preservation" proved="true">
+  <proof prover="3"><result status="valid" time="0.038722" steps="114058"/></proof>
+  </goal>
+  <goal name="find&#39;vc.36" expl="loop invariant preservation" proved="true">
+  <proof prover="9"><result status="valid" time="0.040000" steps="350"/></proof>
+  </goal>
+  <goal name="find&#39;vc.37" expl="loop invariant preservation" proved="true">
+  <proof prover="3"><result status="valid" time="0.715183" steps="3352241"/></proof>
   </goal>
  </transf>
  </goal>
@@ -365,40 +403,40 @@
  <goal name="unify&#39;vc" expl="VC for unify" proved="true">
  <transf name="split_vc" proved="true" >
   <goal name="unify&#39;vc.0" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.04" steps="10880"/></proof>
+  <proof prover="3"><result status="valid" time="0.032410" steps="54474"/></proof>
   </goal>
   <goal name="unify&#39;vc.1" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.05" steps="10971"/></proof>
+  <proof prover="3"><result status="valid" time="0.033181" steps="54644"/></proof>
   </goal>
   <goal name="unify&#39;vc.2" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.03" steps="10119"/></proof>
+  <proof prover="10"><result status="valid" time="0.140918" steps="12298"/></proof>
   </goal>
   <goal name="unify&#39;vc.3" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.03" steps="11588"/></proof>
+  <proof prover="3"><result status="valid" time="0.036107" steps="61971"/></proof>
   </goal>
   <goal name="unify&#39;vc.4" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.02" steps="10363"/></proof>
+  <proof prover="10"><result status="valid" time="0.169998" steps="13333"/></proof>
   </goal>
   <goal name="unify&#39;vc.5" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.04" steps="13791"/></proof>
+  <proof prover="3"><result status="valid" time="0.042312" steps="68763"/></proof>
   </goal>
   <goal name="unify&#39;vc.6" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.05" steps="13765"/></proof>
+  <proof prover="3"><result status="valid" time="0.034068" steps="67554"/></proof>
   </goal>
   <goal name="unify&#39;vc.7" expl="precondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.04" steps="14140"/></proof>
+  <proof prover="3"><result status="valid" time="0.038317" steps="76816"/></proof>
   </goal>
   <goal name="unify&#39;vc.8" expl="postcondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.03" steps="13200"/></proof>
+  <proof prover="3"><result status="valid" time="0.070782" steps="122827"/></proof>
   </goal>
   <goal name="unify&#39;vc.9" expl="postcondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.99" steps="114682"/></proof>
+  <proof prover="3"><result status="valid" time="0.232133" steps="649389"/></proof>
   </goal>
   <goal name="unify&#39;vc.10" expl="postcondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.05" steps="17597"/></proof>
+  <proof prover="3"><result status="valid" time="0.071914" steps="160887"/></proof>
   </goal>
   <goal name="unify&#39;vc.11" expl="postcondition" proved="true">
-  <proof prover="2"><result status="valid" time="0.09" steps="25594"/></proof>
+  <proof prover="3"><result status="valid" time="0.309794" steps="753768"/></proof>
   </goal>
  </transf>
  </goal>
