@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+ROOT=$(realpath ../creusot)
+echo $ROOT
+cargo run --bin dev-why3 --manifest-path $ROOT/creusot-dev-config/Cargo.toml -- --warn-off=unused_variable --warn-off=clone_not_abstract --warn-off=axiom_abstract ide -L $ROOT/prelude $@

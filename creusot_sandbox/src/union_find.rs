@@ -11,10 +11,11 @@ pub struct UnionFindModel {
 impl model::ShallowModel for UnionFind {
     type ShallowModelTy = UnionFindModel;
     #[logic]
+    #[open(self)]
     fn shallow_model(self) -> Self::ShallowModelTy {
         pearlite! {
             UnionFindModel {
-                parent : @self.parent
+                parent : self.parent@
             }
         }
     }
@@ -23,7 +24,7 @@ impl model::ShallowModel for UnionFind {
 impl UnionFindModel {
     #[logic]
     fn parent(&self, i: Int) -> Int {
-        pearlite! { @(self.parent)[i] }
+        pearlite! { (self.parent)[i]@ }
     }
 
     #[predicate]
@@ -146,27 +147,27 @@ impl UnionFindModel {
     fn update(&self, i: usize, r: usize) -> Self {
         pearlite! {
             UnionFindModel {
-                parent : self.parent.set(@i, r)
+                parent : self.parent.set(i@, r)
             }
         }
     }
 
     #[logic]
     #[ensures (
-        forall <i : usize, r : usize> self.in_range(@i) ==> self.update(i, r).parent(@i) ==  @r)]
+        forall <i : usize, r : usize> self.in_range(i@) ==> self.update(i, r).parent(i@) ==  r@)]
     fn lemma_update_parent_eq(&self) {}
 
     #[logic]
     #[ensures (
         forall <i : usize, r : usize, j : Int>
-        self.in_range(@i) ==> self.in_range(j) ==> @i != j ==>
+        self.in_range(i@) ==> self.in_range(j) ==> i@ != j ==>
         self.update(i, r).parent(j) ==  self.parent(j) )]
     fn lemma_update_parent_ne(&self) {}
 
     #[logic]
     #[ensures (
         forall <i : usize, r : usize, j : Int>
-        self.in_range(@i) ==> self.update(i, r).in_range(j) == self.in_range(j) )]
+        self.in_range(i@) ==> self.update(i, r).in_range(j) == self.in_range(j) )]
     fn lemma_update_in_range(self) {}
 
 
@@ -185,11 +186,11 @@ impl UnionFindModel {
 
     #[logic]
     #[requires (self.invariant())]
-    #[requires (self.in_range(@i))]
-    #[requires (self.in_range(@r))]
-    #[requires (self.is_root(@r))]
+    #[requires (self.in_range(i@))]
+    #[requires (self.in_range(r@))]
+    #[requires (self.is_root(r@))]
     #[ensures (forall <j : Int, n: Int>
-               self.in_range(j) ==> self.reach(j, @i, n) ==> self.update(i, r).belong(j, @r))]
+               self.in_range(j) ==> self.reach(j, i@, n) ==> self.update(i, r).belong(j, r@))]
     fn lemma_update_belong_updated(&self, i: usize, r: usize) {
         self.lemma_update_parent_eq();
         self.lemma_update_parent_ne();
@@ -202,12 +203,12 @@ impl UnionFindModel {
 
     #[logic]
     #[requires (self.invariant())]
-    #[requires (self.in_range(@i))]
-    #[requires (self.in_range(@r))]
-    #[requires (self.is_root(@r))]
+    #[requires (self.in_range(i@))]
+    #[requires (self.in_range(r@))]
+    #[requires (self.is_root(r@))]
     #[ensures (forall <j : Int, g : Int>
                self.in_range(j) ==>
-               !(exists <n : Int> self.reach(j, @i, n)) ==>
+               !(exists <n : Int> self.reach(j, i@, n)) ==>
                self.update(i, r).belong(j, g) == self.belong(j, g))]
     fn lemma_update_belong_preserved(&self, i: usize, r: usize) {
         self.lemma_update_parent_eq();
@@ -221,15 +222,15 @@ impl UnionFindModel {
 
     #[logic]
     #[requires (self.invariant())]
-    #[requires (self.in_range(@i))]
-    #[requires (self.in_range(@r))]
-    #[requires (self.is_root(@r))]
+    #[requires (self.in_range(i@))]
+    #[requires (self.in_range(r@))]
+    #[requires (self.is_root(r@))]
     #[ensures (
-        self.belong(@i, @r) ==>
+        self.belong(i@, r@) ==>
         forall <j : Int, g : Int>
                self.in_range(j) ==>
                self.update(i, r).belong(j, g) == self.belong(j, g))]
-    #[ensures(self.belong(@i, @r) ==> self.update(i, r).equal(*self))]
+    #[ensures(self.belong(i@, r@) ==> self.update(i, r).equal(*self))]
     #[ensures (self.update(i, r).invariant())]
     fn lemma_update_belong_shortcut(&self, i: usize, r: usize) {
         self.lemma_update_belong_updated(i, r);
@@ -240,15 +241,15 @@ impl UnionFindModel {
 
     #[logic]
     #[requires (self.invariant())]
-    #[requires (self.in_range(@i))]
-    #[requires (self.in_range(@r))]
-    #[requires (self.is_root(@r))]
+    #[requires (self.in_range(i@))]
+    #[requires (self.in_range(r@))]
+    #[requires (self.is_root(r@))]
     #[ensures (
-        self.is_root(@i) ==>
+        self.is_root(i@) ==>
         forall <j : Int, g : Int>
             self.in_range(j) ==>
-            self.update(i, r).belong(j, g) == if self.belong(j, @i) {
-                g == @r
+            self.update(i, r).belong(j, g) == if self.belong(j, i@) {
+                g == r@
             } else {
                 self.belong(j, g)
             })]
@@ -262,69 +263,69 @@ impl UnionFindModel {
 }
 
 impl UnionFind {
-    #[ensures((@result).invariant())]
-    #[ensures(forall <i : Int> (@result).in_range(i) ==> (@result).belong(i, i))]
+    #[ensures((result@).invariant())]
+    #[ensures(forall <i : Int> (result@).in_range(i) ==> (result@).belong(i, i))]
     pub fn new(n: usize) -> UnionFind {
         let uf = UnionFind {
             parent: (0..n).collect(),
         };
-        proof_assert!((@uf).reach_refl());
-        proof_assert!(forall <i : Int> (@uf).in_range(i) ==>  (@uf).is_root(i));
-        //proof_assert!((@uf).invariant_range());
-        proof_assert!((@uf).invariant_belong());
+        proof_assert!((uf@).reach_refl());
+        proof_assert!(forall <i : Int> (uf@).in_range(i) ==>  (uf@).is_root(i));
+        //proof_assert!((uf@).invariant_range());
+        proof_assert!((uf@).invariant_belong());
         uf
     }
 
-    #[requires((@self).invariant())]
-    #[ensures((@^self).invariant())]
-    #[requires((@self).in_range(@x))]
-    #[ensures((@self).belong(@x, @result))]
-    #[ensures((@^self).equal(@self))]
+    #[requires(self@.invariant())]
+    #[ensures((^self)@.invariant())]
+    #[requires(self@.in_range(x@))]
+    #[ensures(self@.belong(x@, result@))]
+    #[ensures((^self)@.equal(self@))]
     pub fn find(&mut self, x: usize) -> usize {
-        let _old: Ghost<UnionFind> = ghost! { *self };
+        let _old: Snapshot<UnionFind> = snapshot! { *self };
         let mut r = x;
-        let mut path: Vec<usize> = vec![];
-        #[invariant(i_belong, forall <g : Int>
-                    (@self).belong(@r, g) ==> (@self).belong(@x, g))]
-        #[invariant(i_in_range, (@self).in_range(@r))]
-        #[invariant(path_belong,
+        let mut path: Vec<usize> = Vec::new();
+        #[invariant(/*i_belong,*/ forall <g : Int>
+                    self@.belong(r@, g) ==> self@.belong(x@, g))]
+        #[invariant(/*i_in_range,*/ self@.in_range(r@))]
+        #[invariant(/*path_belong,*/
                     forall <j : usize, g: Int>
-                        (@path).contains(j) ==>
-                        (@self).belong(@j, g) ==> (@self).belong(@x, g))]
-        #[invariant(path_in_range, forall <j : usize> (@path).contains(j) ==> (@self).in_range(@j))]
+                        (path@).contains(j) ==>
+                        self@.belong(j@, g) ==> self@.belong(x@, g))]
+        #[invariant(/*path_in_range,*/ forall <j : usize> (path@).contains(j) ==> self@.in_range(j@))]
         while self.parent[r] != r {
             path.push(r);
             r = self.parent[r];
         }
 
-        let _path_ghost: Ghost<Vec<usize>> = ghost! { path };
-        let _ : Ghost<()> = ghost! { pearlite! { (@self).lemma_belong_unique() } };
-        proof_assert!( (@self).root_belong_refl() );
-        #[invariant(inv, (@self).invariant())]
-        #[invariant(equal, (@self).equal(@_old))]
-        #[invariant(root, (@self).is_root(@r))]
+        let _path_ghost: Snapshot<Vec<usize>> = snapshot! { path };
+        let _ : Snapshot<()> = snapshot! { pearlite! { self@.lemma_belong_unique() } };
+        proof_assert!( self@.root_belong_refl() );
+        #[invariant(/*inv,*/ self@.invariant())]
+        #[invariant(/*equal,*/ self@.equal(_old@))]
+        #[invariant(/*root,*/ self@.is_root(r@))]
         for j in path {
-            proof_assert!(j == (@_path_ghost)[produced.len()-1]);
+            proof_assert!(j == (_path_ghost@)[produced.len()-1]);
             self.update(j, r);
         }
         r
     }
 
 
-    #[requires((@self).invariant())]
-    #[ensures((@^self).invariant())]
-    #[requires((@self).in_range(@x))]
-    #[requires((@self).in_range(@y))]
+    #[requires(self@.invariant())]
+    #[ensures((^self)@.invariant())]
+    #[requires(self@.in_range(x@))]
+    #[requires(self@.in_range(y@))]
     #[ensures(forall <i : Int, j : Int>
-              (@^self).same_set(i, j) == (
-                  (@self).same_set(i, j) ||
-                  ((@self).same_set(i, @x) && (@self).same_set(j, @y)) ||
-                  ((@self).same_set(i, @y) && (@self).same_set(j, @x)))
+              (^self)@.same_set(i, j) == (
+                  self@.same_set(i, j) ||
+                  (self@.same_set(i, x@) && self@.same_set(j, y@)) ||
+                  (self@.same_set(i, y@) && self@.same_set(j, x@)))
               )]
-    #[ensures(result == !(@self).same_set(@x, @y))]
-    #[ensures(result == !(@^self).equal(@self))]
+    #[ensures(result == !self@.same_set(x@, y@))]
+    #[ensures(result == !(^self)@.equal(self@))]
     pub fn unify(&mut self, x: usize, y: usize) -> bool {
-        let _ : Ghost<()> = ghost! { pearlite! { (@self).lemma_belong_unique() } };
+        let _ : Snapshot<()> = snapshot! { pearlite! { self@.lemma_belong_unique() } };
         let rx = self.find(x);
         let ry = self.find(y);
         if rx == ry {
@@ -335,35 +336,35 @@ impl UnionFind {
         }
     }
 
-    #[requires((@self).invariant())]
-    #[requires((@self).in_range(@i))]
-    #[requires((@self).in_range(@r))]
-    #[requires((@self).is_root(@r))]
-    #[ensures(@^self == (@self).update(i, r))]
-    #[ensures((@^self).invariant())]
-    #[ensures(forall <j : Int> (@^self).in_range(j) == (@self).in_range(j))]
-    #[ensures((@self).belong(@i, @r) ==> (@^self).equal(@self))]
+    #[requires(self@.invariant())]
+    #[requires(self@.in_range(i@))]
+    #[requires(self@.in_range(r@))]
+    #[requires(self@.is_root(r@))]
+    #[ensures((^self)@ == self@.update(i, r))]
+    #[ensures((^self)@.invariant())]
+    #[ensures(forall <j : Int> (^self)@.in_range(j) == (self)@.in_range(j))]
+    #[ensures(self@.belong(i@, r@) ==> (^self)@.equal(self@))]
     #[ensures (
-        (@self).is_root(@i) ==>
+        self@.is_root(i@) ==>
         forall <j : Int, g : Int>
-            (@self).in_range(j) ==>
-            (@^self).belong(j, g) == if (@self).belong(j, @i) {
-                g == @r
+            self@.in_range(j) ==>
+            (^self)@.belong(j, g) == if self@.belong(j, i@) {
+                g == r@
             } else {
-                (@self).belong(j, g)
+                self@.belong(j, g)
             })]
     fn update(&mut self, i: usize, r: usize) {
-        let _old: Ghost<&mut Self> = ghost! { self };
+        let _old: Snapshot<&mut Self> = snapshot! { self };
         self.parent[i] = r;
-        proof_assert!((@self.parent)[@i] == r);
-        proof_assert!((@self).parent.ext_eq((@_old).parent.set(@i, r)));
+        proof_assert!((self@.parent)[i@] == r);
+        proof_assert!(self@.parent.ext_eq((_old@).parent.set(i@, r)));
 
-        proof_assert!(forall <i: Int> (@self).in_range(i) == (@_old).in_range(i));
-        let _: Ghost<()> = ghost! { pearlite! { (@_old).lemma_update_belong_shortcut(i, r) } };
-        let _: Ghost<()> = ghost! { pearlite! { (@_old).lemma_update_belong_unify(i, r) } };
+        proof_assert!(forall <i: Int> self@.in_range(i) == (_old@).in_range(i));
+        let _: Snapshot<()> = snapshot! { pearlite! { (_old@).lemma_update_belong_shortcut(i, r) } };
+        let _: Snapshot<()> = snapshot! { pearlite! { (_old@).lemma_update_belong_unify(i, r) } };
         proof_assert!(
-            (@_old).belong(@i, @r) ==>
-            forall <j : Int> 
-            (@_old).in_range(j) ==> (@self).belong(j, @r) == (@_old).belong(j, @r));
+            (_old@).belong(i@, r@) ==>
+            forall <j : Int>
+            (_old@).in_range(j) ==> self@.belong(j, r@) == (_old@).belong(j, r@));
     }
 }
